@@ -12,7 +12,7 @@ via Node.js website [here](https://nodejs.org/).
 ```bash
 
 # Cloning the repository
-$ git clone https://github.com/snuckdev/LightShooterJS.git
+$ git clone https://github.com/Andre-Alvim/LightShooterJS.git
 
 # Entering in the directory
 $ cd LightShooterJS
