@@ -25,5 +25,5 @@ $ node .
 
 ```
 
-This project has no malicious intent, it was developed by studies and learning
+⚠️ This project has no malicious intent, it was developed by studies and learning
 
