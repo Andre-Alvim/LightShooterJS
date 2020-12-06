@@ -9,9 +9,6 @@ via Node.js website [here](https://nodejs.org/).
 ## 📦 Installation
 
 
-This project has no malicious intent, it was developed by studies and learning
-
-
 ```bash
 
 # Cloning the repository
@@ -27,3 +24,6 @@ $ npm install
 $ node .
 
 ```
+
+This project has no malicious intent, it was developed by studies and learning
+
