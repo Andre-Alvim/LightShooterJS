@@ -9,13 +9,10 @@ via Node.js website [here](https://nodejs.org/).
 ## 📦 Installation
 
 
-This project has no malicious intent, it was developed by studies and learning
-
-
 ```bash
 
 # Cloning the repository
-$ git clone https://github.com/snuckdev/LightShooterJS.git
+$ git clone https://github.com/Andre-Alvim/LightShooterJS.git
 
 # Entering in the directory
 $ cd LightShooterJS
@@ -27,3 +24,6 @@ $ npm install
 $ node .
 
 ```
+
+⚠️ This project has no malicious intent, it was developed by studies and learning
+

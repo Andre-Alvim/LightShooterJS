@@ -38,24 +38,27 @@ function saveImage(url) {
     const image = $('#screenshot-image').attr('src');
 
     download.image({ url: image, dest: './images',  }).then(({ filename }) => {
-      console.log(chalk.green('[ + ] Saved image to ' + filename))
+      console.log(chalk.green('[ + ] Saved to ' + filename))
     }).catch(() => {
-      console.log(chalk.red('[ - ] The screenshot was removed or image does not exists.'));
+      console.log(chalk.red(`[ - ] Screenshot ${url.split('/').pop()} doesn't exists.`));
     });
 
   }).catch((err) => {
     if(err) {
       if(err.response.status === 403) {
-        console.log(chalk.red('[ - ] Cloudflare blocked your IP, use a VPN.'));
+        console.clear();
+        printSlug();
+        console.log(chalk.red('[ - ] Cloudflare blocked your IP, use a VPN. Proxies are not supported yet.'));
+        process.exit();
       }
     }
   });
 }
 
 function generateRandomId(length) {
-  let result = '';
-  let characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
-  let charactersLength = characters.length;
+  var result           = '';
+  var characters       = 'abcdefghijklmnopqrstuvwxyz0123456789';
+  var charactersLength = characters.length;
   for ( var i = 0; i < length; i++ ) {
      result += characters.charAt(Math.floor(Math.random() * charactersLength));
   }
@@ -63,8 +66,9 @@ function generateRandomId(length) {
 }
 
 async function downloadRandomImages(images) {
+
   for(let i = 0; i < images; i++) {
-    saveImage(`https://prnt.sc/${generateRandomId(6)}`);
+    saveImage(`${urlPrefix}${generateRandomId(6)}`);
     await delay(500);
   }
 
@@ -73,13 +77,19 @@ async function downloadRandomImages(images) {
 inquirer.prompt([
   {
     name: 'images_length',
-    type: 'input',
+    type: 'number',
     message: 'How much images do you want to download?',
   },
 ]).then((answer) => {
-  const imagesLength = Number(answer.images_length);
+  if(!answer.images_length) {
+    console.log(chalk.red('Please enter a valid number'));
+  } else {
+    const imagesLength = Number(answer.images_length);
 
-  console.log(chalk.green(`Downloading ${imagesLength} images from PrintScreen's website.\n\n`));
+    console.clear();
+    printSlug();
+    console.log(chalk.green(`Downloading ${imagesLength} images from https://prnt.sc\n\n`));
 
-  downloadRandomImages(imagesLength);
+    downloadRandomImages(imagesLength);
+  }
 });
